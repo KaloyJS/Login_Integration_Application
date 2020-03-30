@@ -93,6 +93,8 @@ namespace Login_Integration_Application
             mdm.Inlines.Add(new LineBreak());
             p.Inlines.Add(mdm);
 
+           
+
             //Give style and formatting to paragraph content.  
             p.FontFamily = new System.Windows.Media.FontFamily("Arial");
             p.FontSize = 12;

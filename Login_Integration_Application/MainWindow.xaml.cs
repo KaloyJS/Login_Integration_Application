@@ -101,30 +101,14 @@ namespace Login_Integration_Application
 
         #endregion
 
-
-        #region Event Handlers
-        private void submitButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (App.USBEventType == USBEvent.Connected)
-            {
-                
-                // Gets Textbox Name
-                Button current = (Button)sender;
-                string currentName = current.Name;
-
-                printLabel(currentName);
-                
-
-
-            }
-            
-            
-            
-
-        }
-
+        #region Printlabel container
+        /// <summary>
+        /// Function that invokes print function 
+        /// </summary>
+        /// <param name="elementName">name of button which the function is being called on to determine which device to print</param>
         public void printLabel(string elementName)
         {
+
             PrintLabel p = new PrintLabel();
             // Checks the textbox name for which device object to check and save
             if (elementName.Contains("1"))
@@ -141,37 +125,184 @@ namespace Login_Integration_Application
             }
         }
 
-        
+        #endregion
+
+        #region Save device container
+
         /// <summary>
-        /// Push data to database when jobnumber property is set
+        /// Invoices the save data function 
+        /// </summary>
+        /// <param name="buttonName">name of button where the function is being invoked on</param>
+        public void SaveDeviceInfo(string buttonName)
+        {
+            // Checks the textbox name for which device object to check and save
+            if (buttonName.Contains("1"))
+            {
+                ApplicationMethods.SaveData(portConnectionViewModel.Device_1);
+
+            }
+            else if (buttonName.Contains("2"))
+            {
+                ApplicationMethods.SaveData(portConnectionViewModel.Device_2);
+
+            }
+            else if (buttonName.Contains("3"))
+            {
+                ApplicationMethods.SaveData(portConnectionViewModel.Device_3);
+
+            }
+        }
+
+        #endregion
+
+        #region set button content/headers to print label
+
+        /// <summary>
+        /// Sets button and headers to print label
+        /// </summary>
+        /// <param name="buttonName"></param>
+        public void SetButtonMode(string buttonName, string type)
+        {
+            if (buttonName.Contains("1"))
+            {
+                // Enable the button
+                portConnectionViewModel.Port1_Button = true;
+                // Sets button content to Print Label                
+                portConnectionViewModel.Port1_ButtonContent = type;
+                ApplicationMethods.setHeaders(portConnectionViewModel.Device_1, PortStatusIconPath.PrinterIcon, type);
+
+            }
+            else if (buttonName.Contains("2"))
+            {
+                // Enable the button
+                portConnectionViewModel.Port2_Button = true;
+                // Sets button content to Print Label
+                portConnectionViewModel.Port2_ButtonContent = type;
+                ApplicationMethods.setHeaders(portConnectionViewModel.Device_2, PortStatusIconPath.PrinterIcon, type);
+
+            }
+            else if (buttonName.Contains("3"))
+            {
+                // Enable the button
+                portConnectionViewModel.Port3_Button = true;
+                // Sets button content to Print Label
+                portConnectionViewModel.Port3_ButtonContent = type;
+                ApplicationMethods.setHeaders(portConnectionViewModel.Device_3, PortStatusIconPath.PrinterIcon, type);
+
+
+            }
+        }
+
+        #endregion
+
+        #region Enable invoice date
+
+        /// <summary>
+        /// Enables Invoice date datepicker
+        /// </summary>
+        public void EnableInvoiceDate(string elementName, bool type)
+        {        
+
+
+            if (elementName.Contains("1"))
+            {
+                portConnectionViewModel.Port1_InvoiceDate = type;
+            }
+            else if (elementName.Contains("2"))
+            {
+                portConnectionViewModel.Port2_InvoiceDate = type;
+
+            }
+            else if (elementName.Contains("3"))
+            {
+                portConnectionViewModel.Port3_InvoiceDate = type;
+            }
+        }
+
+        #endregion
+
+        
+
+        #region Event Handlers
+
+        /// <summary>
+        /// Button Handler 
+        /// Modes : content = "Save device info" = push device object to php endpoint to save info
+        /// content = "Print Label" = prints device object label
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Jobnumber_TextChangedHandler(object sender, TextChangedEventArgs e)
+        private void submitButton_Click(object sender, RoutedEventArgs e)
         {
             if (App.USBEventType == USBEvent.Connected)
             {
-                // Gets Textbox Name
-                TextBox current = (TextBox)sender;
+
+                // Gets current button
+                Button current = (Button)sender;
                 string currentName = current.Name;
+                string type = current.Content.ToString();
+                //printLabel(currentName);
 
-                // Checks the textbox name for which device object to check and save
-                if (currentName.Contains("1"))
+                if (type == "Save device info")
                 {
-                    ApplicationMethods.SaveData(portConnectionViewModel.Device_1);
+                    // Save mode, pushes Device properties to php endpoint to save to database, generate csv and push into ftp
+                    // if successful returns CSV Uploaded status which triggers means data succesfully saved and triggers the print mode
+                    SaveDeviceInfo(currentName);
+
+                    //MessageBox.Show("Saving device info");
+                    //ApplicationMethods.SetDeviceProperty("Status", portConnectionViewModel, currentName, "CSV Uploaded");
 
                 }
-                else if (currentName.Contains("2"))
+                else if (type == "Print Label")
                 {
-                    ApplicationMethods.SaveData(portConnectionViewModel.Device_2);
+                    // Print mode prints device object properties into label
+                    printLabel(currentName);
+
+                    //MessageBox.Show("Printing");
 
                 }
-                else if (currentName.Contains("3"))
-                {
-                    ApplicationMethods.SaveData(portConnectionViewModel.Device_3);
 
+
+
+            }      
+
+        }
+
+        
+
+        
+       /// <summary>
+       /// When Jobnumber is generated, check if it is valid. If valid enable Invoice date invoice datepicker to generate warranty status
+       /// </summary>
+       /// <param name="sender"></param>
+       /// <param name="e"></param>
+        private void Jobnumber_TextChangedHandler(object sender, TextChangedEventArgs e)
+        {
+
+
+            if (App.USBEventType == USBEvent.Connected)
+            {
+                TextBox current = (TextBox)sender;
+                string jobnumber = current.Text;
+                string currentName = current.Name;
+                int jobnumberLength = jobnumber.Length;
+
+                //Check if jobnumber is valid, if valid enable date invoice datepicker to generate warranty status
+                if (jobnumberLength == 10)
+                {
+                    //Enable corresponding date invoice datepicker
+                    EnableInvoiceDate(currentName, true);
+                }
+                else
+                {
+                    MessageBox.Show("Something went wrong contact data Department, Disconnect device");
+                    //disable corresponding date invoice datepicker
+                    EnableInvoiceDate(currentName, false);
                 }
             }
+
+            
+
         }
 
         /// <summary>
@@ -181,6 +312,8 @@ namespace Login_Integration_Application
         /// <param name="e"></param>
         private void Status_TextChangedHandler(object sender, TextChangedEventArgs e)
         {
+            // Scenarios: Ready to save = Sets button to save mode, change button content// Headers to Save device info
+
             if (App.USBEventType == USBEvent.Connected)
             {
                 // Gets Textbox Name
@@ -188,32 +321,92 @@ namespace Login_Integration_Application
                 string currentName = current.Name;
                 string statusContent = current.Text;
 
+                //Enables the print label button
+
                 if (statusContent.Trim() == "CSV Uploaded")
                 {
-                    // Checks the textbox name for which device object to check and save
-                    if (currentName.Contains("1"))
-                    {
-                        portConnectionViewModel.Port1_PrintButton = true;
-                        ApplicationMethods.setHeaders(portConnectionViewModel.Device_1, PortStatusIconPath.PrinterIcon, "Print Label");
-                    }
-                    else if (currentName.Contains("2"))
-                    {
-                        portConnectionViewModel.Port2_PrintButton = true;
-                        ApplicationMethods.setHeaders(portConnectionViewModel.Device_2, PortStatusIconPath.PrinterIcon, "Print Label");
-                    }
-                    else if (currentName.Contains("3"))
-                    {
-                        portConnectionViewModel.Port3_PrintButton = true;
-                        ApplicationMethods.setHeaders(portConnectionViewModel.Device_3, PortStatusIconPath.PrinterIcon, "Print Label");
+                    // Set the button/header to print mode
+                    SetButtonMode(currentName, "Print Label");
 
-                    }
+                }
+                else if (statusContent.Trim() == "Ready to save")
+                {
+                    // change button mode to save mode
+                    SetButtonMode(currentName, "Save device info");
                 }
                
                 
             }
         }
 
+        /// <summary>
+        /// Selected Change handler on the datepicker to calculate warranty status
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void WarrantyCheck(object sender, SelectionChangedEventArgs e)
+        {
+            if (App.USBEventType == USBEvent.Connected)
+            {
+                // Gets current Datepicker
+                DatePicker current = (DatePicker)sender;
+                string currentName = current.Name;
+
+                ApplicationMethods.SetDeviceProperty("InvoiceDate", portConnectionViewModel, currentName, current.SelectedDate.Value.Date.ToShortDateString());
+
+                // Subtract datepicker selected date from current date
+                DateTime start = current.SelectedDate.Value.Date;
+                DateTime finish = DateTime.Now;
+                TimeSpan difference = finish.Subtract(start);
+                string warrantyStatus;
+                string warrantyCode;
+
+                // IF date difference is  less than or equal to 365 device is in warranty if not out of warrant
+                if (difference.TotalDays <= 365)
+                {
+                    warrantyStatus = "In Warranty";
+                    warrantyCode = "7";
+                }
+                else
+                {
+                    warrantyStatus = "Out of warranty";
+                    warrantyCode = "4";
+                }
+                // Sets warranty obj property 
+                ApplicationMethods.SetDeviceProperty("Warranty", portConnectionViewModel, currentName, warrantyStatus);
+                ApplicationMethods.SetDeviceProperty("WarrantyCode", portConnectionViewModel, currentName, warrantyCode);
+            }
+
+            
+        }
+
+
         #endregion
+        /// <summary>
+        /// When Warranty Status changes to In Warranty/Out of warranty enable the button and put it in save mode
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void WarrantyStatus_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (App.USBEventType == USBEvent.Connected)
+            {
+                // Gets Textbox Name
+                TextBox current = (TextBox)sender;
+                string currentName = current.Name;
+                string currentContent = current.Text;
+
+                if (currentContent == "In Warranty" || currentContent == "Out of warranty")
+                {
+                    // set status to Ready to save
+                    ApplicationMethods.SetDeviceProperty("Status", portConnectionViewModel, currentName, "Ready to save");
+                }
+            }
+
+            
+        }
+
+       
     }
 }
 

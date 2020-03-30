@@ -25,14 +25,32 @@ namespace Login_Integration_Application
         public string ConnectedUDIDs { get; set; }
 
         /// <summary>
-        /// Print Button Status
+        /// Determines the Button is enabled/disabled
         /// </summary>
         
-        public bool Port1_PrintButton { get; set; }
+        public bool Port1_Button { get; set; }
 
-        public bool Port2_PrintButton { get; set; }
+        public bool Port2_Button { get; set; }
 
-        public bool Port3_PrintButton { get; set; }
+        public bool Port3_Button { get; set; }
+
+        /// <summary>
+        /// Determines the content of the port buttons
+        /// </summary>
+        public string Port1_ButtonContent { get; set; }
+
+        public string Port2_ButtonContent { get; set; }
+
+        public string Port3_ButtonContent { get; set; }
+
+        /// <summary>
+        /// Status of Date invoice date picker
+        /// </summary>
+        public bool Port1_InvoiceDate { get; set; }
+
+        public bool Port2_InvoiceDate { get; set; }
+
+        public bool Port3_InvoiceDate { get; set; }
 
 
         public PortConnectionViewModel()
@@ -44,13 +62,20 @@ namespace Login_Integration_Application
             // Instantiate a new list of connected Devices UDID
             connectedDevicesUDID = new List<string>();
 
+            // disables invoice date datepicker on start
+            Port1_InvoiceDate = false;
+            Port2_InvoiceDate = false;
+            Port3_InvoiceDate = false;
+
             // Instantiate Print Buttons
 
-            Port1_PrintButton = false;
-            Port2_PrintButton = false;
-            Port3_PrintButton = false;
+            Port1_Button = false;
+            Port2_Button = false;
+            Port3_Button = false;
 
-
+            Port1_ButtonContent = "Save Device Info";
+            Port2_ButtonContent = "Save Device Info";
+            Port3_ButtonContent = "Save Device Info";
 
 
         }

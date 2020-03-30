@@ -6,43 +6,44 @@
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:local="clr-namespace:Login_Integration_Application"
         mc:Ignorable="d"
-        Title="SBE Login Application" Height="740" Width="870">
-    <Border Padding="10" Background="#FFAEB3E8">
-        <StackPanel>
-      
-            <!-- Grid For 3 Port panels -->
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="281*" />
-                    <ColumnDefinition Width="38*" />
-                    <ColumnDefinition Width="243*"/>
-                    <ColumnDefinition Width="280*" />
-                </Grid.ColumnDefinitions>
+        Title="SBE Login Application" Height="850" Width="870">
+    <ScrollViewer VerticalScrollBarVisibility="Visible">
+        <Border Padding="10" Background="#FFAEB3E8">
+            <StackPanel>
 
-                
-                <!-- Port 1 -->
-                <StackPanel Grid.Column="0" Margin="0 0 10 0">
+                <!-- Grid For 3 Port panels -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="281*" />
+                        <ColumnDefinition Width="38*" />
+                        <ColumnDefinition Width="243*"/>
+                        <ColumnDefinition Width="280*" />
+                    </Grid.ColumnDefinitions>
 
-                    <Border BorderBrush="Black" BorderThickness="1">
 
-                        <StackPanel Background="#FFF0EBEB">
-                            <!-- Port Number -->
-                            <TextBlock 
+                    <!-- Port 1 -->
+                    <StackPanel Grid.Column="0" Margin="0 0 10 0">
+
+                        <Border BorderBrush="Black" BorderThickness="1">
+
+                            <StackPanel Background="#FFF0EBEB">
+                                <!-- Port Number -->
+                                <TextBlock 
                             Text="Port 1" 
                             FontWeight="Bold"
                             TextAlignment="Center"
                             FontSize="24"
                             FontFamily="Century Gothic"/>
-                            
 
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="3*" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
 
-                                <!-- Header Port 1 -->
-                                <TextBlock 
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <!-- Header Port 1 -->
+                                    <TextBlock 
                                     ScrollViewer.HorizontalScrollBarVisibility="Auto"
                                     ScrollViewer.CanContentScroll="True"
                                     Grid.Column="0"
@@ -54,98 +55,106 @@
                                     Margin="0,0,0,0"/>
 
 
-                                <!-- Icon -->
-                                <Image Grid.Column="1" Width="50" Source="{Binding Device_1.StatusIcon}"/>
+                                    <!-- Icon -->
+                                    <Image Grid.Column="1" Width="50" Source="{Binding Device_1.StatusIcon}"/>
 
-                            </Grid>
-
-
+                                </Grid>
 
 
-                            <!-- Manufacturer Port 1 -->
-                            <TextBlock Text="Manufacturer:" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox IsReadOnly="True" x:Name="OemTextBox_1" Margin="5 5" Text="{Binding Device_1.OEM}" />
 
-                            <!-- IMEI Port 1 -->
-                            <TextBlock Text="IMEI:" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox IsReadOnly="True" x:Name="ImeiTextBox_1" Margin="5 5" Text="{Binding Device_1.IMEI}"/>
 
-                            <!-- Model Port 1 -->
-                            <TextBlock Text="Model:" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox IsReadOnly="True" x:Name="ModelTextBox_1" Margin="5 5" Text="{Binding Device_1.Model}"/>
+                                <!-- Manufacturer Port 1 -->
+                                <TextBlock Text="Manufacturer:" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox IsReadOnly="True" x:Name="OemTextBox_1" Margin="5 5" Text="{Binding Device_1.OEM}" />
 
-                            <!-- Serial Number Port 1 -->
-                            <TextBlock Text="Serial Number:" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox IsReadOnly="True" x:Name="SerialNumberTextBox_1" Margin="5 5" Text="{Binding Device_1.Serial_Number}"/>
+                                <!-- IMEI Port 1 -->
+                                <TextBlock Text="IMEI:" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox IsReadOnly="True" x:Name="ImeiTextBox_1" Margin="5 5" Text="{Binding Device_1.IMEI}"/>
 
-                            <!-- Software Version Port 1 -->
-                            <TextBlock Text="Software Version:" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox IsReadOnly="True" x:Name="SoftwareVersionTextBox_1" Margin="5 5" Text="{Binding Device_1.Software_Version}"/>
+                                <!-- Model Port 1 -->
+                                <TextBlock Text="Model:" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox IsReadOnly="True" x:Name="ModelTextBox_1" Margin="5 5" Text="{Binding Device_1.Model}"/>
 
-                            <!-- Capacity Port 1 -->
-                            <TextBlock Text="Capacity:" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox IsReadOnly="True" x:Name="CapacityTextBox_1" Margin="5 5" Text="{Binding Device_1.Capacity}"/>
+                                <!-- Serial Number Port 1 -->
+                                <TextBlock Text="Serial Number:" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox IsReadOnly="True" x:Name="SerialNumberTextBox_1" Margin="5 5" Text="{Binding Device_1.Serial_Number}"/>
 
-                            <!-- Color Port 1 -->
-                            <TextBlock Text="Color:" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox IsReadOnly="True" x:Name="ColorTextBox_1" Margin="5 5" Text="{Binding Device_1.Color}"/>
+                                <!-- Software Version Port 1 -->
+                                <TextBlock Text="Software Version:" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox IsReadOnly="True" x:Name="SoftwareVersionTextBox_1" Margin="5 5" Text="{Binding Device_1.Software_Version}"/>
 
-                            <!-- FMIP lock 1 -->
-                            <TextBlock Text="FMIP Locked" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox IsReadOnly="True" x:Name="FMIPTextBox_1" Margin="5 5" Text="{Binding Device_1.FMIP}"/>
+                                <!-- Capacity Port 1 -->
+                                <TextBlock Text="Capacity:" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox IsReadOnly="True" x:Name="CapacityTextBox_1" Margin="5 5" Text="{Binding Device_1.Capacity}"/>
 
-                            <!-- MDM lock 1 -->
-                            <TextBlock Text="MDM Locked" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox IsReadOnly="True" x:Name="MDMTextBox_1" Margin="5 5" Text="{Binding Device_1.MDM_Lock}"/>
+                                <!-- Color Port 1 -->
+                                <TextBlock Text="Color:" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox IsReadOnly="True" x:Name="ColorTextBox_1" Margin="5 5" Text="{Binding Device_1.Color}"/>
 
-                            <!-- CodePro Port 1 -->
-                            <TextBlock Text="CodePro" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox IsReadOnly="True" x:Name="CodeProTextBox_1" Margin="5 5" Text="{Binding Device_1.CodePro}"/>
+                                <!-- FMIP lock 1 -->
+                                <TextBlock Text="FMIP Locked" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox IsReadOnly="True" x:Name="FMIPTextBox_1" Margin="5 5" Text="{Binding Device_1.FMIP}"/>
 
-                            <!-- Jobnumber Port 1 -->
-                            <TextBlock Text="Jobnumber" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox IsReadOnly="True" x:Name="JobnumberTextBox_1" Margin="5 5" Text="{Binding Device_1.Jobnumber}" TextChanged="Jobnumber_TextChangedHandler"/>
+                                <!-- MDM lock 1 -->
+                                <TextBlock Text="MDM Locked" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox IsReadOnly="True" x:Name="MDMTextBox_1" Margin="5 5" Text="{Binding Device_1.MDM_Lock}"/>
 
-                            <!-- Status Port 1 -->
-                            <TextBlock Text="Status:" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox IsReadOnly="True" x:Name="StatusTextBox_1" Margin="5 5 5 20" Text="{Binding Device_1.Status}" TextChanged="Status_TextChangedHandler"/>
+                                <!-- CodePro Port 1 -->
+                                <TextBlock Text="CodePro" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox IsReadOnly="True" x:Name="CodeProTextBox_1" Margin="5 5" Text="{Binding Device_1.CodePro}"/>
 
-                            <Button x:Name="PrintLabel_1" Content="Print Label" Margin="10" Click="submitButton_Click"  IsEnabled="{Binding Port1_PrintButton}"/>
+                                <!-- Jobnumber Port 1 -->
+                                <TextBlock Text="Jobnumber" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox IsReadOnly="True" x:Name="JobnumberTextBox_1" Margin="5 5" Text="{Binding Device_1.Jobnumber}" TextChanged="Jobnumber_TextChangedHandler"/>
 
-                            <!-- UDID lock 1 -->
+                                <!-- Invoice Date part 1 -->
+                                <TextBlock Text="Invoice Date:" FontFamily="Segoe UI" Margin="5 0"/>
+                                <DatePicker Name="InvoiceDate_1"  Margin="5 5" SelectedDateChanged="WarrantyCheck" IsEnabled="{Binding Port1_InvoiceDate}"/>
 
-                            <!--<TextBlock Text="UDID" FontFamily="Segoe UI" Margin="5 0"/>
+                                <!-- Warranty Status 1 -->
+                                <TextBlock Text="Warranty Status:" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox IsReadOnly="True" x:Name="WarrantyStatusTextBox_1" Margin="5 5 5 20" Text="{Binding Device_1.Warranty}" TextChanged="WarrantyStatus_TextChanged"/>
+
+                                <!-- Status Port 1 -->
+                                <TextBlock Text="Status:" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox IsReadOnly="True" x:Name="StatusTextBox_1" Margin="5 5 5 20" Text="{Binding Device_1.Status}" TextChanged="Status_TextChangedHandler"/>
+
+                                <Button x:Name="Button_1" Content="{Binding Port1_ButtonContent}" Margin="10" Click="submitButton_Click"  IsEnabled="{Binding Port1_Button}"/>
+
+                                <!-- UDID lock 1 -->
+
+                                <!--<TextBlock Text="UDID" FontFamily="Segoe UI" Margin="5 0"/>
                             <TextBox IsReadOnly="True" x:Name="UDIDTextBox_1" Margin="5 5" Text="{Binding Device_1.UDID}" />-->
 
 
-                        </StackPanel>
+                            </StackPanel>
 
-                    </Border>
+                        </Border>
 
-                </StackPanel>
+                    </StackPanel>
 
-                <!-- Port 2 -->
-                <StackPanel Grid.Column="1" Margin="0 0 0 0" Grid.ColumnSpan="2">
+                    <!-- Port 2 -->
+                    <StackPanel Grid.Column="1" Margin="0 0 0 0" Grid.ColumnSpan="2">
 
-                    <Border BorderBrush="Black" BorderThickness="1">
+                        <Border BorderBrush="Black" BorderThickness="1">
 
-                        <StackPanel  Background="#FFF0EBEB">
-                            <!-- Port Number -->
-                            <TextBlock 
+                            <StackPanel  Background="#FFF0EBEB">
+                                <!-- Port Number -->
+                                <TextBlock 
                             Text="Port 2" 
                             FontWeight="Bold"
                             TextAlignment="Center"
                             FontSize="24"
                             FontFamily="Century Gothic"/>
 
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="3*" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
 
-                                <!-- Header Port 1 -->
-                                <TextBlock 
+                                    <!-- Header Port 1 -->
+                                    <TextBlock 
                                     Grid.Column="0"
                                     x:Name="Header_2"
                                     Text="{Binding Device_2.Header}"
@@ -154,97 +163,105 @@
                                     FontFamily="Century Gothic"
                                     Margin="0,0,0,0"/>
 
-                                <!-- Icon -->
-                                <Image Grid.Column="1" Width="50" Source="{Binding Device_2.StatusIcon}"/>
+                                    <!-- Icon -->
+                                    <Image Grid.Column="1" Width="50" Source="{Binding Device_2.StatusIcon}"/>
 
-                            </Grid>
+                                </Grid>
 
 
 
-                            <!-- Manufacturer Port 2 -->
-                            <TextBlock Text="Manufacturer:" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox IsReadOnly="True" x:Name="OemTextBox_2" Margin="5 5" Text="{Binding Device_2.OEM}" />
+                                <!-- Manufacturer Port 2 -->
+                                <TextBlock Text="Manufacturer:" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox IsReadOnly="True" x:Name="OemTextBox_2" Margin="5 5" Text="{Binding Device_2.OEM}" />
 
-                            <!-- IMEI Port 2 -->
-                            <TextBlock Text="IMEI:" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox IsReadOnly="True" x:Name="ImeiTextBox_2" Margin="5 5" Text="{Binding Device_2.IMEI}"/>
+                                <!-- IMEI Port 2 -->
+                                <TextBlock Text="IMEI:" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox IsReadOnly="True" x:Name="ImeiTextBox_2" Margin="5 5" Text="{Binding Device_2.IMEI}"/>
 
-                            <!-- Model Port 2 -->
-                            <TextBlock Text="Model:" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox IsReadOnly="True" x:Name="ModelTextBox_2" Margin="5 5" Text="{Binding Device_2.Model}"/>
+                                <!-- Model Port 2 -->
+                                <TextBlock Text="Model:" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox IsReadOnly="True" x:Name="ModelTextBox_2" Margin="5 5" Text="{Binding Device_2.Model}"/>
 
-                            <!-- Serial Number Port 2 -->
-                            <TextBlock Text="Serial Number:" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox IsReadOnly="True" x:Name="SerialNumberTextBox_2" Margin="5 5" Text="{Binding Device_2.Serial_Number}"/>
+                                <!-- Serial Number Port 2 -->
+                                <TextBlock Text="Serial Number:" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox IsReadOnly="True" x:Name="SerialNumberTextBox_2" Margin="5 5" Text="{Binding Device_2.Serial_Number}"/>
 
-                            <!-- Software Version Port 2 -->
-                            <TextBlock Text="Software Version:" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox IsReadOnly="True" x:Name="SoftwareVersionTextBox_2" Margin="5 5" Text="{Binding Device_2.Software_Version}"/>
+                                <!-- Software Version Port 2 -->
+                                <TextBlock Text="Software Version:" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox IsReadOnly="True" x:Name="SoftwareVersionTextBox_2" Margin="5 5" Text="{Binding Device_2.Software_Version}"/>
 
-                            <!-- Capacity Port 2 -->
-                            <TextBlock Text="Capacity:" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox IsReadOnly="True" x:Name="CapacityTextBox_2" Margin="5 5" Text="{Binding Device_2.Capacity}"/>
+                                <!-- Capacity Port 2 -->
+                                <TextBlock Text="Capacity:" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox IsReadOnly="True" x:Name="CapacityTextBox_2" Margin="5 5" Text="{Binding Device_2.Capacity}"/>
 
-                            <!-- Color Port 2 -->
-                            <TextBlock Text="Color:" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox IsReadOnly="True" x:Name="ColorTextBox_2" Margin="5 5" Text="{Binding Device_2.Color}"/>
+                                <!-- Color Port 2 -->
+                                <TextBlock Text="Color:" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox IsReadOnly="True" x:Name="ColorTextBox_2" Margin="5 5" Text="{Binding Device_2.Color}"/>
 
-                            <!-- FMIP lock 2 -->
-                            <TextBlock Text="FMIP Locked" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox IsReadOnly="True" x:Name="FMIPTextBox_2" Margin="5 5" Text="{Binding Device_2.FMIP}"/>
+                                <!-- FMIP lock 2 -->
+                                <TextBlock Text="FMIP Locked" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox IsReadOnly="True" x:Name="FMIPTextBox_2" Margin="5 5" Text="{Binding Device_2.FMIP}"/>
 
-                            <!-- MDM lock 2 -->
-                            <TextBlock Text="MDM Locked" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox IsReadOnly="True" x:Name="MDMTextBox_2" Margin="5 5" Text="{Binding Device_2.MDM_Lock}"/>
+                                <!-- MDM lock 2 -->
+                                <TextBlock Text="MDM Locked" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox IsReadOnly="True" x:Name="MDMTextBox_2" Margin="5 5" Text="{Binding Device_2.MDM_Lock}"/>
 
-                            <!-- CodePro Port 2 -->
-                            <TextBlock Text="CodePro" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox IsReadOnly="True" x:Name="CodeProTextBox_2" Margin="5 5" Text="{Binding Device_2.CodePro}" />
+                                <!-- CodePro Port 2 -->
+                                <TextBlock Text="CodePro" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox IsReadOnly="True" x:Name="CodeProTextBox_2" Margin="5 5" Text="{Binding Device_2.CodePro}" />
 
-                            <!-- Jobnumber Port 2 -->
-                            <TextBlock Text="Jobnumber" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox IsReadOnly="True" x:Name="JobnumberTextBox_2" Margin="5 5" Text="{Binding Device_2.Jobnumber}" TextChanged="Jobnumber_TextChangedHandler"/>
+                                <!-- Jobnumber Port 2 -->
+                                <TextBlock Text="Jobnumber" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox IsReadOnly="True" x:Name="JobnumberTextBox_2" Margin="5 5" Text="{Binding Device_2.Jobnumber}" TextChanged="Jobnumber_TextChangedHandler"/>
 
-                            <!-- Status Port 2 -->
-                            <TextBlock Text="Status:" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox IsReadOnly="True" x:Name="StatusTextBox_2" Margin="5 5 5 20" Text="{Binding Device_2.Status}" TextChanged="Status_TextChangedHandler"/>
+                                <!-- Invoice Date part 2 -->
+                                <TextBlock Text="Invoice Date:" FontFamily="Segoe UI" Margin="5 0"/>
+                                <DatePicker Name="InvoiceDate_2"  Margin="5 5" SelectedDateChanged="WarrantyCheck" IsEnabled="{Binding Port2_InvoiceDate}"/>
 
-                            <Button x:Name="PrintLabel_2" Content="Print Label" Margin="10" Click="submitButton_Click" IsEnabled="{Binding Port2_PrintButton}"/>
+                                <!-- Warranty Status 2 -->
+                                <TextBlock Text="Warranty Status:" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox IsReadOnly="True" x:Name="WarrantyStatusTextBox_2" Margin="5 5 5 20" Text="{Binding Device_2.Warranty}" TextChanged="WarrantyStatus_TextChanged"/>
 
-                            <!-- UDID lock 2 -->
-                            <!--<TextBlock Text="UDID" FontFamily="Segoe UI" Margin="5 0"/>
+                                <!-- Status Port 2 -->
+                                <TextBlock Text="Status:" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox IsReadOnly="True" x:Name="StatusTextBox_2" Margin="5 5 5 20" Text="{Binding Device_2.Status}" TextChanged="Status_TextChangedHandler"/>
+
+                                <Button x:Name="Button_2" Content="{Binding Port2_ButtonContent}" Margin="10" Click="submitButton_Click" IsEnabled="{Binding Port2_Button}"/>
+
+                                <!-- UDID lock 2 -->
+                                <!--<TextBlock Text="UDID" FontFamily="Segoe UI" Margin="5 0"/>
                             <TextBox IsReadOnly="True" x:Name="UDIDTextBox_2" Margin="5 5"  Text="{Binding Device_2.UDID}"/>-->
 
 
 
-                        </StackPanel>
+                            </StackPanel>
 
-                    </Border>
+                        </Border>
 
-                </StackPanel>
+                    </StackPanel>
 
-                <!-- Port 3 -->
-                <StackPanel Grid.Column="3" Margin="10 0 0 0">
+                    <!-- Port 3 -->
+                    <StackPanel Grid.Column="3" Margin="10 0 0 0">
 
-                    <Border BorderBrush="Black" BorderThickness="1">
+                        <Border BorderBrush="Black" BorderThickness="1">
 
-                        <StackPanel  Background="#FFF0EBEB">
-                            <!-- Port Number -->
-                            <TextBlock 
+                            <StackPanel  Background="#FFF0EBEB">
+                                <!-- Port Number -->
+                                <TextBlock 
                             Text="Port 3" 
                             FontWeight="Bold"
                             TextAlignment="Center"
                             FontSize="24"
                             FontFamily="Century Gothic"/>
 
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="3*" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
 
-                                <!-- Header Port 3 -->
-                                <TextBlock 
+                                    <!-- Header Port 3 -->
+                                    <TextBlock 
                                     Grid.Column="0"
                                     x:Name="Header_3"
                                     Text="{Binding Device_3.Header}"
@@ -253,82 +270,91 @@
                                     FontFamily="Century Gothic"
                                     Margin="0,0,0,0"/>
 
-                                <!-- Icon -->
-                                <Image Grid.Column="1" Width="50" Source="{Binding Device_3.StatusIcon}"/>
+                                    <!-- Icon -->
+                                    <Image Grid.Column="1" Width="50" Source="{Binding Device_3.StatusIcon}"/>
 
-                            </Grid>
+                                </Grid>
 
 
 
-                            <!-- Manufacturer Port 3 -->
-                            <TextBlock Text="Manufacturer:" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox  x:Name="OemTextBox_3" Margin="5 5" Text="{Binding Device_3.OEM}" IsReadOnly="True"/>
+                                <!-- Manufacturer Port 3 -->
+                                <TextBlock Text="Manufacturer:" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox  x:Name="OemTextBox_3" Margin="5 5" Text="{Binding Device_3.OEM}" IsReadOnly="True"/>
 
-                            <!-- IMEI Port 3 -->
-                            <TextBlock Text="IMEI:" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox x:Name="ImeiTextBox_3" Margin="5 5" Text="{Binding Device_3.IMEI}" IsReadOnly="True"/>
+                                <!-- IMEI Port 3 -->
+                                <TextBlock Text="IMEI:" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox x:Name="ImeiTextBox_3" Margin="5 5" Text="{Binding Device_3.IMEI}" IsReadOnly="True"/>
 
-                            <!-- Model Port 3 -->
-                            <TextBlock Text="Model:" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox x:Name="ModelTextBox_3" Margin="5 5" Text="{Binding Device_3.Model}" IsReadOnly="True"/>
+                                <!-- Model Port 3 -->
+                                <TextBlock Text="Model:" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox x:Name="ModelTextBox_3" Margin="5 5" Text="{Binding Device_3.Model}" IsReadOnly="True"/>
 
-                            <!-- Serial Number Port 3 -->
-                            <TextBlock Text="Serial Number:" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox x:Name="SerialNumberTextBox_3" Margin="5 5" Text="{Binding Device_3.Serial_Number}" IsReadOnly="True"/>
+                                <!-- Serial Number Port 3 -->
+                                <TextBlock Text="Serial Number:" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox x:Name="SerialNumberTextBox_3" Margin="5 5" Text="{Binding Device_3.Serial_Number}" IsReadOnly="True"/>
 
-                            <!-- Software Version Port 3 -->
-                            <TextBlock Text="Software Version:" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox x:Name="SoftwareVersionTextBox_3" Margin="5 5" Text="{Binding Device_3.Software_Version}" IsReadOnly="True"/>
+                                <!-- Software Version Port 3 -->
+                                <TextBlock Text="Software Version:" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox x:Name="SoftwareVersionTextBox_3" Margin="5 5" Text="{Binding Device_3.Software_Version}" IsReadOnly="True"/>
 
-                            <!-- Capacity Port 3 -->
-                            <TextBlock Text="Capacity:" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox x:Name="CapacityTextBox_3" Margin="5 5" Text="{Binding Device_3.Capacity}" IsReadOnly="True"/>
+                                <!-- Capacity Port 3 -->
+                                <TextBlock Text="Capacity:" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox x:Name="CapacityTextBox_3" Margin="5 5" Text="{Binding Device_3.Capacity}" IsReadOnly="True"/>
 
-                            <!-- Color Port 3 -->
-                            <TextBlock Text="Color:" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox x:Name="ColorTextBox_3" Margin="5 5" Text="{Binding Device_3.Color}" IsReadOnly="True"/>
+                                <!-- Color Port 3 -->
+                                <TextBlock Text="Color:" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox x:Name="ColorTextBox_3" Margin="5 5" Text="{Binding Device_3.Color}" IsReadOnly="True"/>
 
-                            <!-- FMIP lock 3 -->
-                            <TextBlock Text="FMIP Locked" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox x:Name="FMIPTextBox_3" Margin="5 5" Text="{Binding Device_3.FMIP}" IsReadOnly="True"/>
+                                <!-- FMIP lock 3 -->
+                                <TextBlock Text="FMIP Locked" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox x:Name="FMIPTextBox_3" Margin="5 5" Text="{Binding Device_3.FMIP}" IsReadOnly="True"/>
 
-                            <!-- MDM lock 3 -->
-                            <TextBlock Text="MDM Locked" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox IsReadOnly="True" x:Name="MDMTextBox_3" Margin="5 5" Text="{Binding Device_3.MDM_Lock}"/>
+                                <!-- MDM lock 3 -->
+                                <TextBlock Text="MDM Locked" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox IsReadOnly="True" x:Name="MDMTextBox_3" Margin="5 5" Text="{Binding Device_3.MDM_Lock}"/>
 
-                            <!-- CodePro Port 3 -->
-                            <TextBlock Text="CodePro" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox x:Name="CodeProTextBox_3" Margin="5 5" Text="{Binding Device_3.CodePro}"    IsReadOnly="True"/>
+                                <!-- CodePro Port 3 -->
+                                <TextBlock Text="CodePro" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox x:Name="CodeProTextBox_3" Margin="5 5" Text="{Binding Device_3.CodePro}"    IsReadOnly="True"/>
 
-                            <!-- Jobnumber Port 3 -->
-                            <TextBlock Text="Jobnumber" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox x:Name="JobnumberTextBox_3" Margin="5 5" Text="{Binding Device_3.Jobnumber}" IsReadOnly="True" TextChanged="Jobnumber_TextChangedHandler"/>
+                                <!-- Jobnumber Port 3 -->
+                                <TextBlock Text="Jobnumber" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox x:Name="JobnumberTextBox_3" Margin="5 5" Text="{Binding Device_3.Jobnumber}" IsReadOnly="True" TextChanged="Jobnumber_TextChangedHandler"/>
 
-                            <!-- Status Port 3 -->
-                            <TextBlock Text="Status:" FontFamily="Segoe UI" Margin="5 0"/>
-                            <TextBox x:Name="StatusTextBox_3" Margin="5 5 5 20" Text="{Binding Device_3.Status}" IsReadOnly="True" TextChanged="Status_TextChangedHandler"/>
+                                <!-- Invoice Date part 3 -->
+                                <TextBlock Text="Invoice Date:" FontFamily="Segoe UI" Margin="5 0"/>
+                                <DatePicker Name="InvoiceDate_3"  Margin="5 5" SelectedDateChanged="WarrantyCheck" IsEnabled="{Binding Port3_InvoiceDate}"/>
 
-                            <Button x:Name="PrintLabel_3" Content="Print Label" Margin="10" Click="submitButton_Click" IsEnabled="{Binding Port3_PrintButton}"/>
+                                <!-- Warranty Status 3 -->
+                                <TextBlock Text="Warranty Status:" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox IsReadOnly="True" x:Name="WarrantyStatusTextBox_3" Margin="5 5 5 20" Text="{Binding Device_3.Warranty}" TextChanged="WarrantyStatus_TextChanged"/>
 
-                            <!-- UDID lock 3 -->
-                            <!--<TextBlock Text="UDID" FontFamily="Segoe UI" Margin="5 0"/>
+                                <!-- Status Port 3 -->
+                                <TextBlock Text="Status:" FontFamily="Segoe UI" Margin="5 0"/>
+                                <TextBox x:Name="StatusTextBox_3" Margin="5 5 5 20" Text="{Binding Device_3.Status}" IsReadOnly="True" TextChanged="Status_TextChangedHandler"/>
+
+                                <Button x:Name="Button_3" Content="{Binding Port3_ButtonContent}" Margin="10" Click="submitButton_Click" IsEnabled="{Binding Port3_Button}"/>
+
+                                <!-- UDID lock 3 -->
+                                <!--<TextBlock Text="UDID" FontFamily="Segoe UI" Margin="5 0"/>
                             <TextBox x:Name="UDIDTextBox_3" Margin="5 5" Text="{Binding Device_3.UDID}" IsReadOnly="True"/>-->
 
 
-                        </StackPanel>
+                            </StackPanel>
 
-                    </Border>
+                        </Border>
 
-                </StackPanel>
+                    </StackPanel>
 
 
-            </Grid>
-            <!-- Connected UDIDs-->
-            <!--<TextBlock Text="Connected UDIDs" FontFamily="Segoe UI" Margin="5 0"/>
+                </Grid>
+                <!-- Connected UDIDs-->
+                <!--<TextBlock Text="Connected UDIDs" FontFamily="Segoe UI" Margin="5 0"/>
             <TextBox x:Name="ConnectedUDIDs" Margin="5 5" Text="{Binding ConnectedUDIDs}"/>-->
-            <!--<Button x:Name="submitButton" Content="Run me" Grid.Column="1" 
+                <!--<Button x:Name="submitButton" Content="Run me" Grid.Column="1" 
                 Grid.Row="3"  Margin="10" Click="submitButton_Click" />-->
-        </StackPanel>
-    </Border>
+            </StackPanel>
+        </Border>
+    </ScrollViewer>
     
 </Window>

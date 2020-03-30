@@ -64,6 +64,11 @@ namespace Login_Integration_Application
         /// </summary>
         public string StatusIcon { get; set; }
 
+        public string InvoiceDate { get; set; }
+
+        public string Warranty { get; set; }
+
+        public string WarrantyCode { get; set; }
 
         public Device(int Port) 
         {

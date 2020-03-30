@@ -6,6 +6,7 @@ using System.Windows;
 using System.Text.RegularExpressions;
 using MessageBox = System.Windows.MessageBox;
 using Newtonsoft.Json;
+using System.Reflection;
 
 namespace Login_Integration_Application
 {
@@ -331,7 +332,11 @@ namespace Login_Integration_Application
                     // Resets the Device Object
                     portConnectionViewModel.Device_1.Reset();
                     // Disables the print button
-                    portConnectionViewModel.Port1_PrintButton = false;
+                    portConnectionViewModel.Port1_Button = false;
+                    // Resets the button content
+                    portConnectionViewModel.Port1_ButtonContent = "Save Device Info";
+                    // Disables Invoice Date picker
+                    portConnectionViewModel.Port1_InvoiceDate = false;
                     break;
 
                 case "2":
@@ -340,7 +345,11 @@ namespace Login_Integration_Application
                     // Resets the Device Object
                     portConnectionViewModel.Device_2.Reset();
                     // Disables the print button
-                    portConnectionViewModel.Port2_PrintButton = false;
+                    portConnectionViewModel.Port2_Button = false;
+                    // Resets the button content
+                    portConnectionViewModel.Port2_ButtonContent = "Save Device Info";
+                    // Disables Invoice Date picker
+                    portConnectionViewModel.Port2_InvoiceDate = false;
                     break;
 
                 case "3":
@@ -349,7 +358,11 @@ namespace Login_Integration_Application
                     // Resets the Device Object
                     portConnectionViewModel.Device_3.Reset();
                     // Disables the print button
-                    portConnectionViewModel.Port3_PrintButton = false;
+                    portConnectionViewModel.Port3_Button = false;
+                    // Resets the button content
+                    portConnectionViewModel.Port3_ButtonContent = "Save Device Info";
+                    // Disables Invoice Date picker
+                    portConnectionViewModel.Port3_InvoiceDate = false;
                     break;
             }
         }
@@ -388,6 +401,61 @@ namespace Login_Integration_Application
 
 
 
-        #endregion  
+        #endregion
+
+        #region dynamically set object property
+
+        /// <summary>
+        /// Method that determines which device to update by passing the elementName where the Method is invoked on
+        /// </summary>
+        /// <param name="propertyName">Device property name</param>
+        /// <param name="portConnectionViewModel">data context object</param>
+        /// <param name="elementName">element name of where the method is invoked from</param>
+        /// <param name="value">value</param>
+        public static void SetDeviceProperty(string propertyName, PortConnectionViewModel portConnectionViewModel, string elementName, string value)
+        {
+            PropertyInfo propertyInfo;
+            Device obj;
+            if (elementName.Contains("1"))
+            {
+                propertyInfo = portConnectionViewModel.Device_1.GetType().GetProperty(propertyName);
+                obj = portConnectionViewModel.Device_1;
+                if (propertyInfo != null)
+                {
+                    propertyInfo.SetValue(obj, value, null);
+                }
+            }
+            else if (elementName.Contains("2"))
+            {
+                propertyInfo = portConnectionViewModel.Device_2.GetType().GetProperty(propertyName);
+                obj = portConnectionViewModel.Device_2;
+                if (propertyInfo != null)
+                {
+                    propertyInfo.SetValue(obj, value, null);
+                }
+            }
+            else if (elementName.Contains("3"))
+            {
+                propertyInfo = portConnectionViewModel.Device_3.GetType().GetProperty(propertyName);
+                obj = portConnectionViewModel.Device_3;
+                if (propertyInfo != null)
+                {
+                    propertyInfo.SetValue(obj, value, null);
+                }
+            }            
+            
+        }
+
+        private void SetObjectProperty(string propertyName, string value, object obj)
+        {
+            PropertyInfo propertyInfo = obj.GetType().GetProperty(propertyName);
+            // make sure object has the property we are after
+            if (propertyInfo != null)
+            {
+                propertyInfo.SetValue(obj, value, null);
+            }
+        }
+
+        #endregion
     }
 }
