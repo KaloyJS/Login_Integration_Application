@@ -109,7 +109,7 @@
 
                                 <!-- Invoice Date part 1 -->
                                 <TextBlock Text="Invoice Date:" FontFamily="Segoe UI" Margin="5 0"/>
-                                <DatePicker Name="InvoiceDate_1"  Margin="5 5" SelectedDateChanged="WarrantyCheck" IsEnabled="{Binding Port1_InvoiceDate}"/>
+                                <DatePicker Name="InvoiceDate_1"  Margin="5 5" SelectedDateChanged="WarrantyCheck" IsEnabled="{Binding Port1_InvoiceDate}" />
 
                                 <!-- Warranty Status 1 -->
                                 <TextBlock Text="Warranty Status:" FontFamily="Segoe UI" Margin="5 0"/>

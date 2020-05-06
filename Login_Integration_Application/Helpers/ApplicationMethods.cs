@@ -337,6 +337,8 @@ namespace Login_Integration_Application
                     portConnectionViewModel.Port1_ButtonContent = "Save Device Info";
                     // Disables Invoice Date picker
                     portConnectionViewModel.Port1_InvoiceDate = false;
+                    // Resets Datepicker
+                    
                     break;
 
                 case "2":
@@ -350,6 +352,7 @@ namespace Login_Integration_Application
                     portConnectionViewModel.Port2_ButtonContent = "Save Device Info";
                     // Disables Invoice Date picker
                     portConnectionViewModel.Port2_InvoiceDate = false;
+                    // Resets Datepicker
                     break;
 
                 case "3":
@@ -363,6 +366,7 @@ namespace Login_Integration_Application
                     portConnectionViewModel.Port3_ButtonContent = "Save Device Info";
                     // Disables Invoice Date picker
                     portConnectionViewModel.Port3_InvoiceDate = false;
+                    // Resets Datepicker
                     break;
             }
         }

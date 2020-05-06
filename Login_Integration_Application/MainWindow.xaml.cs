@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using LibUsbDotNet.DeviceNotify;
 
+
 namespace Login_Integration_Application
 {
     
@@ -68,7 +69,7 @@ namespace Login_Integration_Application
                     {
                         App.NumberOfConnectedDevice++;
                         // Get Device Information and Assign to each port
-                        ApplicationMethods.OnConnect(ConnectedPort, portConnectionViewModel, App.NumberOfConnectedDevice);                        
+                        ApplicationMethods.OnConnect(ConnectedPort, portConnectionViewModel, App.NumberOfConnectedDevice);
                     }
 
 
@@ -88,8 +89,9 @@ namespace Login_Integration_Application
                     if (!string.IsNullOrEmpty(DisconnectedPort))
                     {
                         App.NumberOfConnectedDevice--;
-                        ApplicationMethods.ClearFields(DisconnectedPort, App.NumberOfConnectedDevice, portConnectionViewModel);                       
-
+                        ApplicationMethods.ClearFields(DisconnectedPort, App.NumberOfConnectedDevice, portConnectionViewModel);
+                        // clear datepicker
+                        clearDatepicker(DisconnectedPort);
                     }
 
 
@@ -381,7 +383,7 @@ namespace Login_Integration_Application
         }
 
 
-        #endregion
+        
         /// <summary>
         /// When Warranty Status changes to In Warranty/Out of warranty enable the button and put it in save mode
         /// </summary>
@@ -405,8 +407,33 @@ namespace Login_Integration_Application
 
             
         }
+        #endregion
 
-       
+        #region clear datepicker
+
+        public void clearDatepicker(string disconnectedPort)
+        {
+            switch (disconnectedPort)
+            {
+                case "1":
+                    // Resets datepicker
+                    InvoiceDate_1.SelectedDate = null;
+
+                    break;
+
+                case "2":
+                    // Resets datepicker
+                    InvoiceDate_2.SelectedDate = null;
+                    break;
+
+                case "3":
+                    // Resets datepicker
+                    InvoiceDate_3.SelectedDate = null;
+                    break;
+            }
+        }
+        #endregion
+
     }
 }
 
