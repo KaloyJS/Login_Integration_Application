@@ -208,7 +208,7 @@ namespace Login_Integration_Application
             }
             else if (device.CodePro == "N/A")
             {
-                ShowError(device, "CodePro not mapped, Please disconnect device and contact Data Department ASAP");
+                ShowError(device, "CodePro not mapped, Please disconnect device and contact Data Department ASAP Model Number: " + device.ModelNumber);
             }
             else
             {
